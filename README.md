@@ -31,6 +31,7 @@ The dataset is provided in JSON format. Each instance represents a paragraph-lev
 {
   "id": "sample_id",
   "type": "MIX", 
+  "domain": "Law",
   "input": "...",
   "corrected": "...",
   "corrections": [
