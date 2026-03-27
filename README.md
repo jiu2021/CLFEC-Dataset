@@ -12,7 +12,7 @@ This repository includes two main JSON files:
 
 To address concerns regarding the real-world applicability and distribution of mixed errors (linguistic and factual), we conducted an additional study on real-world Chinese texts. 
 
-We randomly sampled **3,000 paragraphs** from the open-source dataset[Zhihu-KOL-More-Than-100-Upvotes](https://huggingface.co/datasets/bzb2023/Zhihu-KOL-More-Than-100-Upvotes). These texts were then processed and proofread using our proposed Agentic system. 
+We randomly sampled **5,000 paragraphs** from the open-source dataset[Zhihu-KOL-More-Than-100-Upvotes](https://huggingface.co/datasets/bzb2023/Zhihu-KOL-More-Than-100-Upvotes). These texts were then processed and proofread using our proposed Agentic system. 
 
 The statistical results (detailed below) demonstrate that **factual errors and linguistic errors frequently co-occur in real-world, user-generated professional texts**, further validating the necessity of the CLFEC unified correction task.
 
