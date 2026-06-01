@@ -1,0 +1,4 @@
+jieba>=0.42.1
+pypinyin>=0.46.0
+python-Levenshtein>=0.20.0
+numpy>=1.20

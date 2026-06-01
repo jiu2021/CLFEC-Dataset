@@ -1,51 +1,99 @@
-# CLFEC: A New Task for Unified Linguistic and Factual Error Correction
+# CLFEC: Unified Linguistic and Factual Error Correction in Chinese Professional Writing
 
-This repository contains the dataset and supplementary evaluation results for our paper: *"CLFEC: A New Task for Unified Linguistic and Factual Error Correction in paragraph-level Chinese Professional Writing"*.
+This repository contains the dataset, evaluation code, and supporting data
+released with our paper:
 
-## 📂 Repository Contents
+> **CLFEC: A New Task for Unified Linguistic and Factual Error Correction
+> in Paragraph-level Chinese Professional Writing.**
 
-This repository includes two main JSON files:
-*   `[CLFEC.json]`:[The main CLFEC benchmark dataset containing diagnostic splits (MIX, LEC, FEC, Error-free).]
-*   `[zhihu_sample.json]`:[The real-world evaluation results/samples from the Zhihu dataset.]
+CLFEC is a paragraph-level Chinese proofreading benchmark that evaluates a
+system's ability to **jointly** correct linguistic errors (Word, Grammar,
+Punctuation) and factual errors in professional writing across four
+domains: current affairs, finance, law, and medicine.
 
-## 📊 Real-World Error Distribution (Response to Reviewers)
+## Repository layout
 
-To address concerns regarding the real-world applicability and distribution of mixed errors (linguistic and factual), we conducted an additional study on real-world Chinese texts. 
+```
+CLFEC-release/
+├── README.md                  ← you are here
+├── data/                      ← the benchmark dataset
+│   ├── CLFEC.json
+│   └── README.md              ← dataset schema and statistics
+├── eval/                      ← standardized evaluation pipeline
+│   ├── normalize.py             step 1: normalize raw model output
+│   ├── eval.py                  step 2: compute metrics against gold
+│   ├── utils.py / annotator/    edit-pair → char-span normalization
+│   ├── run_eval.sh              convenience wrapper (normalize + eval)
+│   ├── requirements.txt
+│   └── README.md              ← evaluation usage and metrics
+└── commercial_data/           ← anonymized commercial-product outputs
+    ├── error_map.json           per-product type → unified category mapping
+    ├── on_clfec/                predictions on the 925 CLFEC paragraphs (Table 3)
+    │   ├── raw/                   raw xlsx exports (P1/P2/P3)
+    │   └── processed/             JSON aligned with CLFEC schema
+    ├── on_corpus/               annotated candidates on source corpus (Motivation)
+    │   ├── products_annotated.xlsx   sheets P1/P2/P3 with flags
+    │   └── reproduce_motivation.py   reproduces motivation-figure numbers
+    └── README.md
+```
 
-We randomly sampled **3,000+ paragraphs** from the open-source dataset[Zhihu-KOL-More-Than-100-Upvotes](https://huggingface.co/datasets/bzb2023/Zhihu-KOL-More-Than-100-Upvotes). These texts were then processed and proofread using our proposed Agentic system. 
+## Quick start
 
-The statistical results (detailed below) demonstrate that **factual errors and linguistic errors frequently co-occur in real-world, user-generated professional texts**, further validating the necessity of the CLFEC unified correction task.
+### 1. Get the dataset
 
-| Error Type    | Total Detected Count | Density (Errors / 1000 words) |
-| :------------ | :------------------- | :---------------------------- |
-| **Word**      | 6,802                | 1.89                          |
-| **Punctuation**| 5,405                | 1.50                          |
-| **Grammatical**| 4,525                | 1.25                          |
-| **Factual**   | 3,543                | 0.98                          |
+The benchmark is `data/CLFEC.json` — 925 paragraphs across 4 domains and 4
+diagnostic splits (`mix`, `lec_only`, `fec_only`, `no_error`). See
+[`data/README.md`](data/README.md) for the schema and statistics.
 
-## 📄 Data Format
+### 2. Run your model
 
-The dataset is provided in JSON format. Each instance represents a paragraph-level text with its corresponding unified corrections. An example structure is as follows:
+Generate corrections for each paragraph in `data/CLFEC.json`. Save them in
+either:
 
-```json
-{
-  "id": "sample_id",
-  "type": "MIX", 
-  "domain": "Law",
-  "input": "...",
-  "corrected": "...",
-  "corrections": [
-    {
-      "span": [191, 195],
-      "error_type": "Fact_Error",
-      "original": "三十万元",
-      "target": "五十万元"
-    },
-    {
-      "span": [274, 275],
-      "error_type": "Word_Error",
-      "original": "地",
-      "target": "的"
-    }
-  ]
+- The **raw model-output format** (`{id, input_text, corrections: [{original, corrected}]}`) — let our pipeline normalize them; or
+- The **standardized prediction format** (matches `CLFEC.json` schema with
+  character-level `cors`) — skip normalization and call `eval.py` directly.
+
+Both formats are documented in [`eval/README.md`](eval/README.md).
+
+### 3. Evaluate
+
+```bash
+cd eval
+pip install -r requirements.txt   # only needed for normalize.py
+bash run_eval.sh /path/to/your_model_output.json ./results
+```
+
+This (i) standardizes your model's `(snippet, corrected_snippet)` pairs into
+character-level edits using a CHERRANT-style aligner, and (ii) reports
+detection / correction Precision · Recall · F1 under both strict and loose
+span matching, broken down by sample type and error type.
+
+## Citation
+
+```bibtex
+@misc{kai2026clfecnewtaskunified,
+      title={CLFEC: A New Task for Unified Linguistic and Factual Error Correction in paragraph-level Chinese Professional Writing}, 
+      author={Jian Kai and Zidong Zhang and Jiwen Chen and Zhengxiang Wu and Songtao Sun and Fuyang Li and Yang Cao and Qiang Liu},
+      year={2026},
+      eprint={2602.23845},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2602.23845}, 
 }
+```
+
+(BibTeX will be updated upon acceptance.)
+
+## License
+
+- **Code** (`eval/`): released under the MIT License.
+- **Dataset** (`data/`): released for non-commercial research use only.
+- **Commercial-product outputs** (`commercial_data/`): redistributed in
+  anonymized form for research reproducibility; the products themselves
+  remain the property of their respective vendors.
+
+## Contact
+
+For questions about the dataset or evaluation, please open an issue on this
+repository or contact the authors via the paper's contact email.
