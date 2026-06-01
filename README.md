@@ -11,6 +11,12 @@ system's ability to **jointly** correct linguistic errors (Word, Grammar,
 Punctuation) and factual errors in professional writing across four
 domains: current affairs, finance, law, and medicine.
 
+<p align="center">
+  <img src="assets/fig_pipeline_overview.jpg" alt="CLFEC data construction pipeline and annotation details" width="100%">
+  <br/>
+  <em>Three-stage construction pipeline (clean source collection → error injection → iterative annotation) and the per-edit annotation flow that ends in a CHERRANT-normalized edit set.</em>
+</p>
+
 ## Repository layout
 
 ```
@@ -68,22 +74,6 @@ This (i) standardizes your model's `(snippet, corrected_snippet)` pairs into
 character-level edits using a CHERRANT-style aligner, and (ii) reports
 detection / correction Precision · Recall · F1 under both strict and loose
 span matching, broken down by sample type and error type.
-
-## Citation
-
-```bibtex
-@misc{kai2026clfecnewtaskunified,
-      title={CLFEC: A New Task for Unified Linguistic and Factual Error Correction in paragraph-level Chinese Professional Writing}, 
-      author={Jian Kai and Zidong Zhang and Jiwen Chen and Zhengxiang Wu and Songtao Sun and Fuyang Li and Yang Cao and Qiang Liu},
-      year={2026},
-      eprint={2602.23845},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2602.23845}, 
-}
-```
-
-(BibTeX will be updated upon acceptance.)
 
 ## License
 
