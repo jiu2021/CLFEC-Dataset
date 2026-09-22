@@ -1,13 +1,10 @@
 # ✍️ CLFEC: Unified Linguistic and Factual Error Correction in Chinese Professional Writing
 
+
+🎉 The paper has been accepted to the **AACL-IJCNLP 2026 Main Conference**. [[arXiv 2602.23845]](https://arxiv.org/abs/2602.23845).
+
 This repository contains the dataset, evaluation code, and supporting data
-released with our paper:
-
-> **CLFEC: A New Task for Unified Linguistic and Factual Error Correction
-> in Paragraph-level Chinese Professional Writing.**
-
-🎉 The paper has been accepted to the **AACL-IJCNLP 2026 Main Conference**.
-The public version is available on [arXiv](https://arxiv.org/abs/2602.23845).
+released with our paper.
 
 CLFEC is a paragraph-level Chinese proofreading benchmark that evaluates a
 system's ability to **jointly** correct linguistic errors (Word, Grammar,
