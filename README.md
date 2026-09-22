@@ -1,10 +1,13 @@
-# CLFEC: Unified Linguistic and Factual Error Correction in Chinese Professional Writing
+# ✍️ CLFEC: Unified Linguistic and Factual Error Correction in Chinese Professional Writing
 
 This repository contains the dataset, evaluation code, and supporting data
 released with our paper:
 
 > **CLFEC: A New Task for Unified Linguistic and Factual Error Correction
 > in Paragraph-level Chinese Professional Writing.**
+
+🎉 The paper has been accepted to the **AACL-IJCNLP 2026 Main Conference**.
+The public version is available on [arXiv](https://arxiv.org/abs/2602.23845).
 
 CLFEC is a paragraph-level Chinese proofreading benchmark that evaluates a
 system's ability to **jointly** correct linguistic errors (Word, Grammar,
@@ -17,7 +20,7 @@ domains: current affairs, finance, law, and medicine.
   <em>Three-stage construction pipeline (clean source collection → error injection → iterative annotation) and the per-edit annotation flow that ends in a CHERRANT-normalized edit set.</em>
 </p>
 
-## Repository layout
+## 📁 Repository layout
 
 ```
 CLFEC-release/
@@ -43,15 +46,15 @@ CLFEC-release/
     └── README.md
 ```
 
-## Quick start
+## 🚀 Quick start
 
-### 1. Get the dataset
+### 1. 📦 Get the dataset
 
 The benchmark is `data/CLFEC.json` — 925 paragraphs across 4 domains and 4
 diagnostic splits (`mix`, `lec_only`, `fec_only`, `no_error`). See
 [`data/README.md`](data/README.md) for the schema and statistics.
 
-### 2. Run your model
+### 2. 🤖 Run your model
 
 Generate corrections for each paragraph in `data/CLFEC.json`. Save them in
 either:
@@ -62,7 +65,7 @@ either:
 
 Both formats are documented in [`eval/README.md`](eval/README.md).
 
-### 3. Evaluate
+### 3. 📊 Evaluate
 
 ```bash
 cd eval
@@ -75,7 +78,7 @@ character-level edits using a CHERRANT-style aligner, and (ii) reports
 detection / correction Precision · Recall · F1 under both strict and loose
 span matching, broken down by sample type and error type.
 
-## License
+## 📄 License
 
 - **Code** (`eval/`): released under the MIT License.
 - **Dataset** (`data/`): released for non-commercial research use only.
@@ -83,7 +86,7 @@ span matching, broken down by sample type and error type.
   anonymized form for research reproducibility; the products themselves
   remain the property of their respective vendors.
 
-## Contact
+## 📬 Contact
 
 For questions about the dataset or evaluation, please open an issue on this
 repository or contact the authors via the paper's contact email.
