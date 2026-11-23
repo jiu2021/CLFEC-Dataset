@@ -215,6 +215,7 @@ def calculate_metrics(
                     correction_tp += 1
                 else:
                     correction_fp += 1
+                    correction_fn += 1
             else:
                 detection_fp += 1
                 correction_fp += 1
