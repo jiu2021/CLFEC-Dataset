@@ -12,7 +12,7 @@ Punctuation) and factual errors in professional writing across four
 domains: current affairs, finance, law, and medicine.
 
 <p align="center">
-  <img src="assets/fig_pipeline_overview.jpg" alt="CLFEC data construction pipeline and annotation details" width="100%">
+  <img src="assets/clfec_overview.png" alt="CLFEC data construction pipeline and annotation details" width="100%">
   <br/>
   <em>Three-stage construction pipeline (clean source collection → error injection → iterative annotation) and the per-edit annotation flow that ends in a CHERRANT-normalized edit set.</em>
 </p>
