@@ -1,7 +1,7 @@
 # ✍️ CLFEC: Unified Linguistic and Factual Error Correction in Chinese Professional Writing
 
 
-🎉 The paper has been accepted to the **AACL-IJCNLP 2026 Main Conference**. [[arXiv 2602.23845]](https://arxiv.org/abs/2602.23845).
+🎉 The paper has been accepted to the **AACL-IJCNLP 2026 Main Conference**. [[arXiv 2602.23845]](https://arxiv.org/abs/2602.23845). [[AACL-IJCNLP 2026]](https://aclanthology.org/2026.aacl-long.41/)
 
 This repository contains the dataset, evaluation code, and supporting data
 released with our paper.
@@ -87,3 +87,36 @@ span matching, broken down by sample type and error type.
 
 For questions about the dataset or evaluation, please open an issue on this
 repository or contact the authors via the paper's contact email.
+
+## Citation
+
+If you use CLFEC in your research, please cite our paper.
+
+```bibtex
+@inproceedings{kai-etal-2026-clfec,
+    title = "{CLFEC}: A New Task for Unified Linguistic and Factual Error Correction in paragraph-level {C}hinese Professional Writing",
+    author = "Kai, Jian  and
+      Zhang, Zidong  and
+      Chen, Jiwen  and
+      Wu, Zhengxiang  and
+      Sun, Songtao  and
+      Li, Fuyang  and
+      Cao, Yang  and
+      Liu, Qiang",
+    editor = "Zhang, Yue  and
+      Xu, Ruifeng  and
+      Purwarianti, Ayu  and
+      Rong, Tong  and
+      Suzuki, Jun",
+    booktitle = "Proceedings of the 15th International Joint Conference on Natural Language Processing and the 5th Conference of the {A}sia-Pacific Chapter of the {A}ssociation for {C}omputational {L}inguistics (Volume 1: Long Papers)",
+    month = nov,
+    year = "2026",
+    address = "Hengqin, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.aacl-long.41/",
+    doi = "10.18653/2026.aacl-long.41",
+    pages = "849--878",
+    ISBN = "979-8-89176-439-2",
+    abstract = "Chinese text correction has traditionally focused on spelling and grammar, while factual error correction is usually treated separately. In paragraph-level Chinese professional writing, linguistic (word/grammar/punctuation) and factual errors can co-occur and interact. Moreover, editorial review leaves few observable errors in published professional texts, making controlled benchmark construction important. This paper introduces \textbf{CLFEC (Chinese Linguistic {\&} Factual Error Correction)}, a new task for joint linguistic and factual correction. We construct a mixed, multi-domain Chinese professional writing dataset spanning current affairs, finance, law, and medicine. We then conduct a systematic study of LLM-based correction paradigms, from prompting to retrieval-augmented generation (RAG) and agentic workflows. The analysis reveals practical challenges, including limited transfer of a specialized corrector, the need for evidence grounding for factual repair, the difficulty of mixed-error paragraphs, and over-correction on clean inputs. Results further show that handling linguistic and factual errors within the same context outperforms decoupled pipelines, and that agentic workflows can be effective with suitable backbone models. Overall, CLFEC provides a new benchmark for Chinese text correction research and practical guidance for proofreading systems. The dataset is publicly available at \url{https://github.com/jiu2021/CLFEC-Dataset}."
+}
+```
